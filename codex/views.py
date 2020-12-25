@@ -3,7 +3,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Headline, Source,Category
+from .models import Headline, Source, Category
 from .serializers import HeadlineSerializer, SourceSerializer, CategorySerializer
 # Create your views here.
 @api_view(['GET'])
@@ -26,7 +26,7 @@ def allHeadlines(request):
 @api_view(['GET'])
 def source_headlines(request, id):
     source = Source.objects.get(pk=id)
-    sourceHeadline = Headline.objects.filter(source=source)
+    sourceHeadline = Headline.objects.filter(source=source).order_by('pubDate')
     serializer = HeadlineSerializer(sourceHeadline, many=True)
     return Response(serializer.data)
 

@@ -21,6 +21,7 @@ class Headline(models.Model):
     description = models.CharField(max_length=3500)
     source = models.ForeignKey(Source, on_delete=models.CASCADE)
     date = models.CharField(max_length=200)
+    pubDate = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.title
