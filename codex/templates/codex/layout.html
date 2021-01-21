@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!--link rel="icon" href="{% static "codex/letter-p-eco-leaves-logo-icon-design-template-vector-3144244.jpg" %}"-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "codex/layout.css" %}">
+    <title>Pajer</title>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-light bg-white shadow-sm">
+        <div class="container">
+          <a class="navbar-brand ml-20" href="{% url "index" %}">
+            <img class="navbar-brand" src="{% static "codex/logos.png" %}" alt="" width="55" height="auto">
+          </a>
+          <div id="navbarText">
+            <span class="navbar-text">
+              
+              {% if user.is_authenticated %}
+                <a class="source" href="{% url "sources" %}">
+                  Sources
+                </a>
+                <a class="source" href="{% url "logout" %}">
+                  Logout
+                </a>
+                <b style="color: #7afc19;">{{request.user}}</b>
+              {% else %}
+                <a class="source" href="{% url "login" %}">
+                  Login
+                </a>
+                <a class="source" href="{% url "register" %}">
+                  Register
+                </a>
+              {% endif %}
+            </span>
+          </div>
+        </div>
+    </nav>
+
+    <div class="grid-container">
+        <div class="side shadow-sm">
+            <div class="jack">
+              <input class="shadow-sm" type="text" id="inu" placeholder="Search our Sources">
+            </div>
+          <div style="padding: 3px; margin-top: 6px; font-size: large;">
+                <a href="{% url "index" %}">
+                  Home
+                </a>
+          </div>
+          <br>
+          <div>
+              <h5 class="display-4">Your Sources</h5>
+          </div>
+          <div class="carded">
+            <ul id='source-list' class="list-group list-group-flush">
+              {% for source in sources.source.all %}
+                        <li id="source-item" class="list-group-item">
+                            <a class="href" href="{% url "headline" source.pk %}">
+                                <img src="{{source.image}}" width="25" alt="." id="icon">
+                                {{source.name}}
+                                <a class="icon" href="{% url 'delete_source' source.pk %}">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                  </svg>
+                                </a>
+                            </a>
+                        </li>
+              {% endfor %}
+            </ul>
+          </div>
+      </div>
+
+      <div class="grid-2">
+        {% block body %}
+        {% endblock body %}
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>

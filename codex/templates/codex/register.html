@@ -1,0 +1,34 @@
+{% extends "codex/layout-copy.html" %}
+
+{% load static %}
+
+{% block body %}
+
+    <div class="login-box">
+        <form action="{% url 'register' %}" method="post">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'codex/logos.png' %}" height="52px" style="padding: 2px; margin: 0px 0px 24px;">
+            </a>
+            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+            <p>Already an account? <a href="{% url 'login' %}">Log in here.</a></p>
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+            </div>
+            {% if message %}
+                <div>{{ message }}</div>
+            {% endif %}
+            <input class="btn btn-outline-success text-dark" type="submit" id="submit" value="Register">
+        </form>
+    </div>
+
+{% endblock %}

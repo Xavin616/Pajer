@@ -1,0 +1,23 @@
+{% extends 'codex/layout.html' %}
+
+
+{% block body %}
+    <div class="headline">
+            <h4 style="margin-left: 30px; font-size: 24px;" class="display-4">Our Sources</h4>
+        <ul class="list-group" style="width: 100; max-height: 78.5vh; overflow-y: scroll;">
+            {% for sourca in sourced %}
+                <li class="list-group-item" style="margin-bottom: 5px;">
+                    <img src="{{sourca.image}}" width="25" alt="." id="icon">
+                        {{sourca.name}}
+                        <a class="icon" href="{% url 'follow_source' sourca.pk %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#7afc19" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </a>
+                </li>
+            {% endfor %}
+                
+        </ul>
+    </div>        
+{% endblock body %}
+    

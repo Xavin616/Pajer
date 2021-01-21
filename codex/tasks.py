@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup as bs
+from feedparser import parse
 from celery import Celery
 from time import sleep
 from datetime import datetime
@@ -33,31 +33,42 @@ def save_function(list):
                 link=article['link'],
                 source=Source.objects.get(name=article['source']),
                 description=article['description'],
-                date=article['date']
             )
         
 @shared_task
 def rss_feeder(source, url):
     article_list = []
-    request = requests.get(url)
-    soup = bs(request.text, features='xml')
-    soup = soup.findAll('item')
+    soup = parse(url)
+    soup = soup.entries    
     for a in soup:
-        title = a.find('title').text
-        link = a.find('link').text
-        date = a.find('pubDate').text
-        description = a.find('description').text
+        try:
+            title = a.title
+            link = a.link
+            description = a.description
 
-        article = {
-            'source': source,
-            'title': title,
-            'link': link,
-            'description': description,
-            'date':date,
-        }
+            article = {
+                'source': source,
+                'title': title,
+                'link': link,
+                'description': description,
+            }
 
-        article_list.append(article)
-        print(f"{article['source']}: {article['title']}")
+            article_list.append(article)
+            print(f"{article['source']}: {article['title']}")
+        except AttributeError:
+            title = a.title
+            link = a.link
+            description = ''
+
+            article = {
+                'source': source,
+                'title': title,
+                'link': link,
+                'description': description,
+            }
+
+            article_list.append(article)
+            print(f"{article['source']}: {article['title']}")
     return save_function(article_list)
         
 @shared_task

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'blog/black.png' %}" type="image/icon type">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>{% block title %}{% endblock title %}</title>
+    <style>
+        #nav {
+            position: relative;
+            left: 60px;
+            
+        }
+        #content {
+            max-width: 700px;
+            text-align: inherit;
+        }
+        h3 {
+            width: auto;
+            margin:auto;
+            padding-bottom: 1px;
+            text-align: center;
+            font-size: 40px !important;
+            border-bottom: 1px #7afc19 solid;
+        }
+        p img {
+            margin: auto;
+            display: block;
+            text-align: center;
+            padding: 10px;
+        }
+        .container {
+            padding: 40px;
+        }
+        main {
+            font-family: 'Times New Roman', Times, serif !important;
+            font-size: 20px;
+            padding: 5px;
+            padding-top: 20px;
+        }
+        .form-group {
+            max-width: 840px;
+            padding: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #7afc19;
+            
+        }
+        a:hover {
+            color: #7afc19);
+        }
+        #write:hover {
+            color: #7afc19;
+        }
+        #write {
+            position: relative;
+            top: 20px;
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        ul {
+            position: relative;
+            right: 20px;
+        }
+        li {
+            padding: 5px;
+        }
+ /*       footer{
+            height: 125px;
+            position: fixed;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+        }*/
+        .login-box {
+            text-align: center;
+            width: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #submit {
+            margin: 1px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+
+    <!--nav class="navbar navbar-dark border-warning bg-transparent shadow rounded-1">
+        <a href="{% url 'index' %}" id="nav" class="navbar-brand"><img src="{% static 'blog/black.png' %}" alt="My image" height="48px"></a>
+
+        <ul class="nav">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-warning" href="{% url 'logout' %}">Log Out</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-warning" href="{% url 'login' %}">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-warning" href="{% url 'register' %}">Register</a>
+                </li>
+            {% endif %}
+        </ul-->
+    </nav>
+
+    <div class="container">
+        {% block body %}
+        {% endblock body %}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</body>
+</html>
