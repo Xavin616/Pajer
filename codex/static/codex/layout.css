@@ -15,6 +15,7 @@ body {
 
 .grid-2 {
     border: 0.25px rgb(199, 199, 199) solid;
+    height: max-content;
 }
 
 .hey {
@@ -36,7 +37,7 @@ body {
     border-bottom: 0.25px rgb(199, 199, 199) solid;
     border-top: 0.25px rgb(199, 199, 199) solid;
     font-size: 14.5px;
-    max-height: 90.5vh;
+    max-height: 90.7vh;
 }
 
 nav {
@@ -44,6 +45,18 @@ nav {
     padding: 0px;
     position: fixed;
     border: 0.45px rgb(199, 199, 199) solid;
+}
+
+.btn:hover, .btn:active {
+    background-color: #7afc19 !important;
+    color: white;
+    font-weight: bolder;
+}
+.btn {
+    border-radius: 11px;
+    border-color: transparent !important;
+    color: #7afc19;
+    font-weight: bold;
 }
 
  #inu {
@@ -55,6 +68,15 @@ nav {
      padding-left: 25px;
      border-radius: 25px;
      color: #adadad;
+}
+
+.btn {
+    margin-top: 3px;
+}
+
+.badge {
+    background-color: #7afc19;
+    padding: 3.75px;
 }
 
 .jack {
@@ -81,7 +103,7 @@ li {
 }
 
 .display-4 {
-    text-decoration: underline 3px #7afc19 solid;
+    /*text-decoration: underline 3px #7afc19 solid;*/
     font-size: large;
 }
 
@@ -112,7 +134,8 @@ a {
 }
 
 .card-body{
-    padding: 0px 8px 16px 16px;
+    padding: 0px 18px 16px 18px;
+    font-size: 13.85px;
 }
 
 .card-header > a:hover {
@@ -126,7 +149,7 @@ a {
 
 #source-item {
     display: block;
-    font-size: 13.5px;
+    font-size: 12.5px;
 }
 
 #source-list {
@@ -157,10 +180,21 @@ button {
 
 .href {
     display: inline;
+    font-size: 12.3px;
 }
 
 #source-item:hover {
     background-color: #7afc19 ;
+    color: white;
+}
+
+#source-item:hover > .href {
+    color: white;
+    font-weight: bold;
+}
+
+#source-item:hover > .icon > svg{
+    background-color: #7afc19;
     color: white;
 }
 
@@ -172,7 +206,7 @@ button {
 .headline {
     width: auto;
     height: 90.5vh;
-    padding: 13px 20px 0px 20px;
+    padding: 13px 25px 0px 25px;
     background-color: #f7f7f7;
 }
 
@@ -196,18 +230,19 @@ p.card-text {
     display: block;
 }
 
-.card-header .noj > h6 {
+.card-header .noj > h5 {
     margin: 7px 0px;
     color: #7afc19;
 }
 
 .card {
     border: 1px solid transparent;
-    box-shadow: 0 12px 15px 12px rgba(58, 57, 59, 0.16);
+    margin-bottom: 10px;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
 }
 .carded {
     padding: 0;
-    max-height: 65.2vh;
+    max-height: 57.2vh;
     overflow-y: scroll;
     
 }
@@ -227,28 +262,26 @@ p.card-text {
     color: #7afc19;
 }
 
+/*
 .cards::-webkit-scrollbar {
     display: none;
-  }
-
+}  
   
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .cards {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-  .carded::-webkit-scrollbar {
+.cards {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carded::-webkit-scrollbar {
     display: none;
-  }
+}
 
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .carded {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
+.carded {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+}
+*/
 
-  
 @media (max-width: 500px) {
     .grid-container { grid-template-columns: repeat(1, 1fr); }
 
@@ -256,9 +289,15 @@ p.card-text {
 
     .cards { overflow-y: none; max-height: none;}
 
-  }
+    .headline {background-color: transparent;}
 
-  .container {
+    .list-group {max-height: 140px;}
+
+}
+
+.card-body > .h1, h1 {
+    font-size: 14.2px !important;
+}
+.container {
       margin-top: -5px;
-  }
-
+}

@@ -16,7 +16,10 @@ class Source(models.Model):
     feed = models.URLField()
     image = models.URLField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
+    
+    '''class Meta:
+        ordering = ['name']'''
+    
     def __str__(self):
         return self.name
 
@@ -26,6 +29,7 @@ class Headline(models.Model):
     description = models.CharField(max_length=3500, default="")
     source = models.ForeignKey(Source, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True, null=True)
+    like = models.BooleanField(default=False, null=True)
 
     def __str__(self):
         return self.title

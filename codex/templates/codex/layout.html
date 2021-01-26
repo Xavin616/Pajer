@@ -19,8 +19,8 @@
             <span class="navbar-text">
               
               {% if user.is_authenticated %}
-                <a class="source" href="{% url "sources" %}">
-                  Sources
+                <a style="text-decoration: 1.8px underline #7afc19;" class="source" href="{% url "sources" %}">
+                  Explore
                 </a>
                 <a class="source" href="{% url "logout" %}">
                   Logout
@@ -42,22 +42,49 @@
     <div class="grid-container">
         <div class="side shadow-sm">
             <div class="jack">
-              <input class="shadow-sm" type="text" id="inu" placeholder="Search our Sources">
+              <form action="{% url 'search' %}" class="form-inline" method="get">
+                <input name="q" class="shadow-sm" type="text" id="inu" placeholder="Search">
+                <button class="btn btn-outline-warning btn-sm" style="margin-top: -3px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+                </button>
+              </form>
             </div>
-          <div style="padding: 3px; margin-top: 6px; font-size: large;">
-                <a href="{% url "index" %}">
-                  Home
-                </a>
+          <div style="padding: 6.8px; font-size: large;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <a href="{% url "index" %}">
+                      Home
+                    </a>
+                  </li>
+                  <!--li class="list-group-item">
+                    Bookmarks
+                  </li-->
+                </ul>
           </div>
           <br>
           <div>
-              <h5 class="display-4">Your Sources</h5>
+              <h5 class="display-4">
+                <a href="{% url "sources" %}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="position: relative; top: -2.35px;" fill="#7afc19" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                </a>
+                Your Sources 
+                <span class="badge badge-pill badge-success">{{count}}</span>
+              </h5>
           </div>
-          <div class="carded">
-            <ul id='source-list' class="list-group list-group-flush">
-              {% for source in sources.source.all %}
-                        <li id="source-item" class="list-group-item">
-                            <a class="href" href="{% url "headline" source.pk %}">
+          
+          {% if count == 0 %}
+            You are not following any feeds!
+            Click the <i style="color: #7afc19;">Sources</i> to follow.
+          {% else %}
+            <div class="carded">
+              <ul id='source-list' class="list-group list-group-flush">
+                {% for source in sources.source.all %}
+                    <a class="href" href="{% url "headline" source.name %}">
+                          <li id="source-item" class="list-group-item">
                                 <img src="{{source.image}}" width="25" alt="." id="icon">
                                 {{source.name}}
                                 <a class="icon" href="{% url 'delete_source' source.pk %}">
@@ -65,11 +92,13 @@
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                   </svg>
                                 </a>
-                            </a>
-                        </li>
-              {% endfor %}
-            </ul>
-          </div>
+                          </li>
+                    </a>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+            
       </div>
 
       <div class="grid-2">

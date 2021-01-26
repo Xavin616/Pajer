@@ -7,26 +7,33 @@
         <header style=" font-weight: bold; color: black; width: 100%; padding: 10px; position: relative;border-bottom: 1px solid #d6d6d6; background-color: white;">
             <img src="{{sed.image}}" width="25" alt="." id="icon">
             {{sed.name}}
+            <a class="icon" href="{% url 'delete_source' sed.pk %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                </svg>
+            </a>
         </header>
         <div class="cards">
             {% for headline in headlines %}
                     <div class="card shadow-sm">
                         <div class="card-header">
                             <a class="noj" href="{{headline.link}}" target="_blank" rel="noopener noreferrer">
-                                <h6>{{headline.title}}</h6>
-                                
+                                <h5 style="color: #7afc19;">{{headline.title}}</h5>
                             </a>
                         </div>
-                        
                         {% if headline.description != '' %}
                             <div class="card-body">
                                 <p class="card-text">{{headline.description|safe}}</p>
                                 <!--a href="{{headline.link}}" target="_blank" class="btn btn-success">Read</a-->
                             </div>
                         {% endif %}
-                            
+                        <!--div class="card-footer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                            </svg>
+                        </div-->                            
                     </div>
-                <br>
+
             {% endfor %}
         </div>
     </div>

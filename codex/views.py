@@ -4,7 +4,9 @@ from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.db.models import Q
 from .models import Headline, Source, Category, Follow, User
+from django.views.generic.list import ListView
 
 def index(request):
     template = 'codex/home.html'
@@ -17,25 +19,30 @@ def sidebar(request):
     template = 'codex/layout.html'
     message = 'Welcome: Home Page!'
     sources = Follow.objects.get(user=request.user)
-    context = {'sources': sources, 'message': message}
+    count = sources.source.count()
+    context = {'sources': sources, 'count': count, 'message': message}
     return render(request, template, context)
 
 @login_required(login_url='login')
 def def_headline(request):
     template = 'codex/headline.html'
-    sources = Follow.objects.get(user=request.user)
+    sources, created = Follow.objects.get_or_create(user=request.user)
     sed = sources.source.first()
     headlines = Headline.objects.filter(source=sources.source.first())[:30]
-    context = {'sources': sources, 'sed': sed,'headlines': headlines}
+    count = sources.source.count()
+    if count == 0:
+        return redirect('sources')
+    context = {'sources': sources, 'sed': sed, 'count': count,'headlines': headlines}
     return render(request, template, context)
 
 @login_required(login_url='login')
 def headline(request, id):
     template = 'codex/headline.html'
     sources = Follow.objects.get(user=request.user)
-    sed = sources.source.get(pk=id)
-    headlines = Headline.objects.filter(source=sed)[:30]
-    context = {'sources': sources, 'sed': sed, 'headlines': headlines}
+    sed = sources.source.get(name=id)
+    headlines = Headline.objects.filter(source=sed)[:50]
+    count = sources.source.count()
+    context = {'sources': sources, 'sed': sed, 'count': count, 'headlines': headlines}
     return render(request, template, context)
 
 @login_required(login_url='login')
@@ -47,37 +54,28 @@ def delete(request, id):
 
 @login_required(login_url='login')
 def sources(request):
-    sources = Follow.objects.get(user=request.user)
+    sources, created = Follow.objects.get_or_create(user=request.user)
     sourced = Source.objects.all()
+    count = sources.source.count()
     template = 'codex/sources.html'
-    context = {'sources': sources, 'sourced': sourced}
+    context = {'sources': sources,'count': count, 'sourced': sourced}
     return render(request, template, context)
 
 @login_required(login_url='login')
 def follow(request, id):
-    source = Source.objects.get(pk=id)
+    source = Source.objects.get(name=id)
     follow, created = Follow.objects.get_or_create(user=request.user)
     follow.source.add(source)
-    return redirect('sources')
+    return redirect('headline', id=id)
     
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def search(request):
+    template = 'codex/search.html'
+    query = request.GET.get('q')
+    object_list = Source.objects.filter(Q(name__icontains=query))
+    sources = Follow.objects.get(user=request.user)
+    count = sources.source.count()    
+    context = {'query': query,'sources': sources,'count': count, 'object_list': object_list}
+    return render(request, template, context)
 
 
 def login_view(request):
