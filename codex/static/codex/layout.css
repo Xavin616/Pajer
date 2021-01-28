@@ -235,6 +235,12 @@ p.card-text {
     color: #7afc19;
 }
 
+h5:hover {
+    margin: 7px 0px;
+    color: black;
+    text-decoration: 2px underline #7afc19;
+}
+
 .card {
     border: 1px solid transparent;
     margin-bottom: 10px;
