@@ -24,6 +24,7 @@
                         {% if headline.description != '' %}
                             <div class="card-body">
                                 <p class="card-text">{{headline.description|safe}}</p>
+                                <p class="card-text">{{ headline.date|time:"H:i" }} | {{ headline.date|date:"D d M Y" }}</p>
                                 <!--a href="{{headline.link}}" target="_blank" class="btn btn-success">Read</a-->
                             </div>
                         {% endif %}

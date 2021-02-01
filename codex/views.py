@@ -61,6 +61,15 @@ def sources(request):
     context = {'sources': sources,'count': count, 'sourced': sourced}
     return render(request, template, context)
 
+'''@login_required(login_url='login')
+def categories(request):
+    sources, created = Follow.objects.get_or_create(user=request.user)
+    sourced = Category.objects.all()
+    count = sources.source.count()
+    template = 'codex/sources.html'
+    context = {'sources': sources,'count': count, 'sourced': sourced}
+    return render(request, template, context)'''
+
 @login_required(login_url='login')
 def follow(request, id):
     source = Source.objects.get(name=id)

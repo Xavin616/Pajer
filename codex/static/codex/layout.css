@@ -117,6 +117,17 @@ a:hover {
     color: #7afc19;
 }
 
+.join {
+    width: 25;
+}
+.join:hover {
+    position: relative;
+    top: -2.35px;
+    width: 25;
+    text-decoration: none !important;
+    
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -235,7 +246,7 @@ p.card-text {
     color: #7afc19;
 }
 
-h5:hover {
+.card-header .noj:hover {
     margin: 7px 0px;
     color: black;
     text-decoration: 2px underline #7afc19;
