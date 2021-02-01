@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -124,9 +124,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CELERY_TASK_SERIALIZER=json
+CELERY_TASK_SERIALIZER= "json"
 
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
+
 '''
 CELERY_BEAT_SCHEDULE = {
     'scraper': {
@@ -135,7 +137,13 @@ CELERY_BEAT_SCHEDULE = {
     }
 }
 '''
+
+
+
+
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 AUTH_USER_MODEL = 'codex.User'
 
+django_heroku.settings(locals())
