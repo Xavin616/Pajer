@@ -136,7 +136,7 @@ BROKER_POOL_LIMIT = None
 BROKER_TRANSPORT = 'amqplib'
 
 # See: http://docs.celeryproject.org/en/latest/configuration.html#broker-url
-BROKER_URL = "amqps://vvyaalbl:W_cX6lGS9v_FTwo_Xxon6bzoKHtBveB6@barnacle.rmq.cloudamqp.com/vvyaalbl"
+BROKER_URL = "amqps://axojrfwd:BetClYCOlq_W5UlCWIbNDL0ohLVCe5W9@barnacle.rmq.cloudamqp.com/axojrfwd"
 
 '''
 CELERY_BEAT_SCHEDULE = {
