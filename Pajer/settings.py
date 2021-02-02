@@ -136,7 +136,7 @@ BROKER_POOL_LIMIT = None
 BROKER_TRANSPORT = 'amqplib'
 
 # See: http://docs.celeryproject.org/en/latest/configuration.html#broker-url
-BROKER_URL = environ.get('CLOUDAMQP_URL', '')
+BROKER_URL = "amqps://vvyaalbl:W_cX6lGS9v_FTwo_Xxon6bzoKHtBveB6@barnacle.rmq.cloudamqp.com/vvyaalbl"
 
 '''
 CELERY_BEAT_SCHEDULE = {
