@@ -9,8 +9,6 @@ from .models import Source, Headline
 
 import requests, json, os, webbrowser
 
-app = Celery('tasks', broker='amqp://localhost')
-
 sources = Source.objects.all()
 
 @shared_task
