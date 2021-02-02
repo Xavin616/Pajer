@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import django_heroku
 from pathlib import Path
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,6 +130,16 @@ CELERY_TASK_SERIALIZER= "json"
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
 BROKER_POOL_LIMIT = None
+
+########## CELERY CONFIGURATION
+# See: http://docs.celeryproject.org/en/latest/configuration.html#broker-transport
+BROKER_TRANSPORT = 'amqplib'
+
+# See: http://docs.celeryproject.org/en/latest/configuration.html#broker-url
+BROKER_URL = environ.get('CLOUDAMQP_URL', '')
+
+# See: http://docs.celeryproject.org/en/latest/configuration.html#celery-result-backend
+CELERY_RESULT_BACKEND = 'amqp'
 
 '''
 CELERY_BEAT_SCHEDULE = {
