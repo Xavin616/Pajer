@@ -131,10 +131,6 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
 CELERY_BROKER_POOL_LIMIT = None
 
-########## CELERY CONFIGURATION
-# See: http://docs.celeryproject.org/en/latest/configuration.html#broker-transport
-CELERY_BROKER_TRANSPORT = 'amqplib'
-
 # See: http://docs.celeryproject.org/en/latest/configuration.html#broker-url
 CELERY_BROKER_URL = "amqps://axojrfwd:BetClYCOlq_W5UlCWIbNDL0ohLVCe5W9@barnacle.rmq.cloudamqp.com/axojrfwd"
 
