@@ -1,1 +1,2 @@
-web: honcho start -f ProcfileHoncho
+web: gunicorn Pajer.wsgi
+scheduler: celery -A Pajer worker --loglevel=info --beat
