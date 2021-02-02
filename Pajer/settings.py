@@ -129,14 +129,14 @@ CELERY_TASK_SERIALIZER= "json"
 
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
-BROKER_POOL_LIMIT = None
+CELERY_BROKER_POOL_LIMIT = None
 
 ########## CELERY CONFIGURATION
 # See: http://docs.celeryproject.org/en/latest/configuration.html#broker-transport
-BROKER_TRANSPORT = 'amqplib'
+CELERY_BROKER_TRANSPORT = 'amqplib'
 
 # See: http://docs.celeryproject.org/en/latest/configuration.html#broker-url
-BROKER_URL = "amqps://axojrfwd:BetClYCOlq_W5UlCWIbNDL0ohLVCe5W9@barnacle.rmq.cloudamqp.com/axojrfwd"
+CELERY_BROKER_URL = "amqps://axojrfwd:BetClYCOlq_W5UlCWIbNDL0ohLVCe5W9@barnacle.rmq.cloudamqp.com/axojrfwd"
 
 '''
 CELERY_BEAT_SCHEDULE = {
