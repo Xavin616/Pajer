@@ -128,6 +128,7 @@ CELERY_TASK_SERIALIZER= "json"
 
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
+BROKER_POOL_LIMIT = None
 
 '''
 CELERY_BEAT_SCHEDULE = {
