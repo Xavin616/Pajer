@@ -1,2 +1,3 @@
 web: gunicorn Pajer.wsgi
-main_worker: celery -A Pajer worker --beat --loglevel=info
+worker: celery -A Pajer worker --loglevel=info
+scheduler: celery -A Pajer beat --loglevel=info
