@@ -226,7 +226,7 @@ button {
     width: auto;
     height: 90.5vh;
     padding: 13px 25px 0px 25px;
-    background-color: #e4e4e4f8;
+    background-color: #ecececf8;
 }
 
 p.card-text {
@@ -242,7 +242,7 @@ p.card-text {
 
 .card-header {
     margin: 0;
-    background-color: #f8f8f8f1;
+    background-color: #f4f8fa;
 }
 
 .noj {
@@ -251,13 +251,13 @@ p.card-text {
 
 .card-header .noj > h5 {
     margin: 7px 0px;
-    color: #6fff00;
+    color: rgba(15, 15, 15, 0.726);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .card-header .noj > h5:hover {
     margin: 7px 0px;
-    color: rgba(15, 15, 15, 0.726);
+    color: #6fff00;
     text-decoration: none;
 }
 
