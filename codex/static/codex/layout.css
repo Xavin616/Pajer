@@ -279,7 +279,7 @@ p.card-text {
     color: #7afc19;
 }
 
-/*
+
 .cards::-webkit-scrollbar {
     display: none;
 }  
@@ -297,7 +297,7 @@ p.card-text {
     -ms-overflow-style: none; 
     scrollbar-width: none;  
 }
-*/
+
 
 @media (max-width: 500px) {
     .grid-container { grid-template-columns: repeat(1, 1fr); }
