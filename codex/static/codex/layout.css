@@ -233,7 +233,7 @@ p.card-text {
 
 .card-header {
     margin: 0;
-    background-color: #f7f7f7ea;
+    background-color: #f5f5f57a;
 }
 
 .noj {
@@ -242,7 +242,7 @@ p.card-text {
 
 .card-header .noj > h5 {
     margin: 7px 0px;
-    color: #7bfc19;
+    color: #6fff00;
 }
 
 .card-header .noj > h5:hover {
