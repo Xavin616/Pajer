@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 hey = str(random.randint(100000, 9999999999991))
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', views.index1, name='home'),
     path('welcome', views.index, name='index'),
     path('user', views.sidebar, name='side'),
     path('user_landing_page', views.def_headline, name='def_headline'),

@@ -8,7 +8,10 @@ from django.db.models import Q
 from .models import Headline, Source, Category, Follow, User
 from django.views.generic.list import ListView
 
-
+def index1(request):
+    template = 'codex/home.html'
+    return render(request, template)
+ 
 def index(request):
     template = 'codex/home.html'
     if request.user in User.objects.all():
