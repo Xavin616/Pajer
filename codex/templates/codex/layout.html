@@ -80,11 +80,11 @@
             Click the <i style="color: #7afc19;">Sources</i> to follow.
           {% else %}
             <div class="carded">
-              <ul id='source-list' class="list-group list-group-flush">
+              <ul id='source-list' class="list-group list-group">
                 {% for source in sources.source.all %}
                     <a class="href" href="{% url "headline" source.name %}">
                           <li id="source-item" class="list-group-item">
-                                <img src="{{source.image}}" width="25" alt="." id="icon">
+                                <img src="{{source.image}}" width="30" alt="." id="icon">
                                 {{source.name}}
                                 <a class="icon" href="{% url 'delete_source' source.pk %}">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">

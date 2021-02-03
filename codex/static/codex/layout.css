@@ -4,6 +4,7 @@ body {
     margin: 0 !important;
     padding: 0 !important;
     background-color: rgb(228, 228, 228);
+    color: rgba(15, 15, 15, 0.726) !important;
 }
 
 .grid-container {
@@ -130,7 +131,9 @@ a:hover {
 
 a {
     text-decoration: none;
-    color: black;
+    color: rgba(15, 15, 15, 0.726);
+    font-style: normal;
+    font-weight: 400;
 }
 
 #source-item > a:hover {
@@ -155,11 +158,16 @@ a {
 
 #icon {
     margin-right: 8.5px;
+    border-radius: 3px;
 }
 
 #source-item {
     display: block;
     font-size: 12.5px;
+    padding: 5px 16px;
+    border: none;
+    font-style: normal;
+    font-weight: 400;
 }
 
 #source-list {
@@ -191,6 +199,7 @@ button {
 .href {
     display: inline;
     font-size: 14px;
+
 }
 
 #source-item:hover {
@@ -242,14 +251,13 @@ p.card-text {
 
 .card-header .noj > h5 {
     margin: 7px 0px;
-    color: rgba(15, 15, 15, 0.726);
+    color: #6fff00;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-decoration: 2px underline #7afc19;
 }
 
 .card-header .noj > h5:hover {
     margin: 7px 0px;
-    color: #6fff00;
+    color: rgba(15, 15, 15, 0.726);
     text-decoration: none;
 }
 
