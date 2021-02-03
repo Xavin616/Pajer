@@ -26,7 +26,7 @@ class Source(models.Model):
 class Headline(models.Model):
     title = models.CharField(max_length=200)
     link = models.URLField()
-    description = models.CharField(max_length=3500, default="")
+    description = models.CharField(max_length=35000, default="")
     source = models.ForeignKey(Source, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True, null=True)
     like = models.BooleanField(default=False, null=True)
