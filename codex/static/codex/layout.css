@@ -226,7 +226,7 @@ button {
     width: auto;
     height: 90.5vh;
     padding: 13px 25px 0px 25px;
-    background-color: #f7f7f7;
+    background-color: #e4e4e4f8;
 }
 
 p.card-text {
@@ -242,7 +242,7 @@ p.card-text {
 
 .card-header {
     margin: 0;
-    background-color: #f5f5f57a;
+    background-color: #f8f8f8f1;
 }
 
 .noj {
