@@ -190,7 +190,7 @@ button {
 
 .href {
     display: inline;
-    font-size: 12.3px;
+    font-size: 14px;
 }
 
 #source-item:hover {
@@ -224,7 +224,7 @@ p.card-text {
     padding-top: 6px;
     padding-bottom: 5px;
     margin: 0px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 #text {
@@ -242,13 +242,15 @@ p.card-text {
 
 .card-header .noj > h5 {
     margin: 7px 0px;
-    color: #6fff00;
+    color: rgba(15, 15, 15, 0.726);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: 2px underline #7afc19;
 }
 
 .card-header .noj > h5:hover {
     margin: 7px 0px;
-    color: black;
-    text-decoration: 2px underline #7afc19;
+    color: #6fff00;
+    text-decoration: none;
 }
 
 .card {
