@@ -8,19 +8,18 @@ from django.db.models import Q
 from .models import Headline, Source, Category, Follow, User
 from django.views.generic.list import ListView
 
+
 def index(request):
     template = 'codex/home.html'
-    message = 'Welcome: Home Page!'
-    context = {'message': message}
-    return render(request, template, context)
-
+    if request.user in User.objects.all():
+        return redirect('def_headline')
+    return render(request, template)
+ 
 @login_required(login_url='login')
 def sidebar(request):
     template = 'codex/layout.html'
-    message = 'Welcome: Home Page!'
     sources = Follow.objects.get(user=request.user)
-    count = sources.source.count()
-    context = {'sources': sources, 'count': count, 'message': message}
+    context = {'sources': sources}
     return render(request, template, context)
 
 @login_required(login_url='login')
@@ -28,11 +27,10 @@ def def_headline(request):
     template = 'codex/headline.html'
     sources, created = Follow.objects.get_or_create(user=request.user)
     sed = sources.source.first()
-    headlines = Headline.objects.filter(source=sources.source.first())[:30]
-    count = sources.source.count()
-    if count == 0:
+    headlines = Headline.objects.filter(source=sources.source.first())[:40]
+    if sources.source_count == 0:
         return redirect('sources')
-    context = {'sources': sources, 'sed': sed, 'count': count,'headlines': headlines}
+    context = {'sources': sources, 'sed': sed, 'headlines': headlines}
     return render(request, template, context)
 
 @login_required(login_url='login')
@@ -40,10 +38,28 @@ def headline(request, id):
     template = 'codex/headline.html'
     sources = Follow.objects.get(user=request.user)
     sed = sources.source.get(name=id)
-    headlines = Headline.objects.filter(source=sed)[:50]
-    count = sources.source.count()
-    context = {'sources': sources, 'sed': sed, 'count': count, 'headlines': headlines}
+    headlines = Headline.objects.filter(source=sed)[:40]
+    context = {'sources': sources, 'sed': sed, 'headlines': headlines}
     return render(request, template, context)
+
+
+@login_required(login_url='login')
+def sources(request):
+    sources, created = Follow.objects.get_or_create(user=request.user)
+    sourced = Source.objects.all()
+    template = 'codex/sources.html'
+    context = {'sources': sources, 'sourced': sourced}
+    return render(request, template, context)
+
+'''@login_required(login_url='login')
+def categories(request):
+    sources, created = Follow.objects.get_or_create(user=request.user)
+    categories = Category.objects.all()
+    template = 'codex/sources.html'
+    context = {'sources': sources, 'sourced': categories}
+    return render(request, template, context)'''
+    
+#######################################################################################    
 
 @login_required(login_url='login')
 def delete(request, id):
@@ -52,41 +68,26 @@ def delete(request, id):
     selected.source.remove(source)
     return redirect('def_headline')
 
-@login_required(login_url='login')
-def sources(request):
-    sources, created = Follow.objects.get_or_create(user=request.user)
-    sourced = Source.objects.all()
-    count = sources.source.count()
-    template = 'codex/sources.html'
-    context = {'sources': sources,'count': count, 'sourced': sourced}
-    return render(request, template, context)
-
-'''@login_required(login_url='login')
-def categories(request):
-    sources, created = Follow.objects.get_or_create(user=request.user)
-    sourced = Category.objects.all()
-    count = sources.source.count()
-    template = 'codex/sources.html'
-    context = {'sources': sources,'count': count, 'sourced': sourced}
-    return render(request, template, context)'''
-
+# Follow
 @login_required(login_url='login')
 def follow(request, id):
     source = Source.objects.get(name=id)
     follow, created = Follow.objects.get_or_create(user=request.user)
     follow.source.add(source)
     return redirect('headline', id=id)
-    
+# Search    
 def search(request):
     template = 'codex/search.html'
     query = request.GET.get('q')
     object_list = Source.objects.filter(Q(name__icontains=query))
     sources = Follow.objects.get(user=request.user)
-    count = sources.source.count()    
-    context = {'query': query,'sources': sources,'count': count, 'object_list': object_list}
+    context = {'query': query,'sources': sources, 'object_list': object_list}
     return render(request, template, context)
 
 
+#######################################################################################
+
+## Login, Register and Logout Functions
 def login_view(request):
     if request.method == "POST":
 

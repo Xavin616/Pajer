@@ -26,6 +26,8 @@ SECRET_KEY = 'i+^6fop$j64o(rud_6(0_z+zt5t&&thp=wp1r2*o0lk#m$d%6_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#DEBUG_PROPAGATE_EXCEPTIONS = True
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -44,7 +46,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,7 +133,8 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 CELERY_BROKER_POOL_LIMIT = None
 
 # See: http://docs.celeryproject.org/en/latest/configuration.html#broker-url
-CELERY_BROKER_URL = "amqps://axojrfwd:BetClYCOlq_W5UlCWIbNDL0ohLVCe5W9@barnacle.rmq.cloudamqp.com/axojrfwd"
+#CELERY_BROKER_URL = "amqps://axojrfwd:BetClYCOlq_W5UlCWIbNDL0ohLVCe5W9@barnacle.rmq.cloudamqp.com/axojrfwd"
+CELERY_BROKER_URL = "amqp://localhost"
 
 '''
 CELERY_BEAT_SCHEDULE = {
@@ -142,10 +144,6 @@ CELERY_BEAT_SCHEDULE = {
     }
 }
 '''
-
-
-
-
 
 CORS_ORIGIN_ALLOW_ALL = True
 

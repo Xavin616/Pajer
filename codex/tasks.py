@@ -29,7 +29,7 @@ def save_function(list):
             Headline.objects.create(
                 title=article['title'],
                 link=article['link'],
-                source=Source.objects.get(name=article['source']),
+                source=Source.objects.get(id=article['source']),
                 description=article['description'],
             )
         
@@ -72,7 +72,7 @@ def rss_feeder(source, url):
 @shared_task
 def scrape():    
     for source in sources:
-        rss_feeder(source.name, source.feed)
+        rss_feeder(source.id, source.feed)
     print('Done!')
 #    notifier('Success', 'Feed Aggregator is done!')
 
