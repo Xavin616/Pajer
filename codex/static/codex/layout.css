@@ -141,7 +141,6 @@ a {
 
 .card-header {
     display: block;
-    border: none !important;
 }
 
 .card-body{
@@ -222,7 +221,7 @@ button {
 }
 
 p.card-text {
-    padding-top: 0;
+    padding-top: 6px;
     padding-bottom: 5px;
     margin: 0px;
     font-size: 13px;
@@ -234,7 +233,7 @@ p.card-text {
 
 .card-header {
     margin: 0;
-    background-color: transparent;
+    background-color: #f7f7f7ea;
 }
 
 .noj {
@@ -243,10 +242,10 @@ p.card-text {
 
 .card-header .noj > h5 {
     margin: 7px 0px;
-    color: #7afc19;
+    color: #7bfc19;
 }
 
-.card-header .noj:hover {
+.card-header .noj > h5:hover {
     margin: 7px 0px;
     color: black;
     text-decoration: 2px underline #7afc19;
