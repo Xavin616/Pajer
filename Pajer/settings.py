@@ -134,7 +134,7 @@ CELERY_BROKER_POOL_LIMIT = None
 
 # See: http://docs.celeryproject.org/en/latest/configuration.html#broker-url
 CELERY_BROKER_URL = "amqps://axojrfwd:BetClYCOlq_W5UlCWIbNDL0ohLVCe5W9@barnacle.rmq.cloudamqp.com/axojrfwd"
-#CELERY_BROKER_URL = "amqp://localhost"
+#kCELERY_BROKER_URL = "amqp://localhost"
 
 '''
 CELERY_BEAT_SCHEDULE = {
