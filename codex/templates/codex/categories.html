@@ -1,0 +1,21 @@
+{% extends 'codex/layout.html' %}
+
+
+{% block body %}
+    <div class="headline">
+        <h4 style="margin-left: 30px; font-size: 24px;" class="display-4">Categories</h4>
+        <ul class="cards" style="width: 100; max-height: 78.5vh; overflow-y: scroll;">
+            <section>
+                {% for sourca in sourced %}
+                    <a href="{% url 'spec_sources' sourca.name %}">
+                        <div class="module" style="background-image: url({{sourca.image}}) !important;">
+                            <h1>{{sourca.name}}</h1>
+                        </div>
+                    </a>
+                {% endfor %}
+                    
+            </section>
+        </ul>
+    </div>        
+{% endblock body %}
+    

@@ -54,15 +54,21 @@ def sources(request):
     context = {'sources': sources, 'sourced': sourced}
     return render(request, template, context)
 
-'''@login_required(login_url='login')
+@login_required(login_url='login')
 def categories(request):
     sources, created = Follow.objects.get_or_create(user=request.user)
     categories = Category.objects.all()
-    template = 'codex/sources.html'
+    template = 'codex/categories.html'
     context = {'sources': sources, 'sourced': categories}
-    return render(request, template, context)'''
-    
-#######################################################################################    
+    return render(request, template, context)       
+
+@login_required(login_url='login')
+def spec_sources(request, id):
+    template = 'codex/sources.html'
+    sources, created = Follow.objects.get_or_create(user=request.user)
+    sourced = Source.objects.filter(category=Category.objects.get(name=id))
+    context = {'sources': sources, 'id': id, 'sourced': sourced}
+    return render(request, template, context)
 
 @login_required(login_url='login')
 def delete(request, id):

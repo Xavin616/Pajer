@@ -250,6 +250,7 @@ p.card-text {
 }
 
 .card-header .noj > h5 {
+    font-size: 17.8px;
     margin: 7px 0px;
     color: rgba(15, 15, 15, 0.726);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -306,6 +307,61 @@ p.card-text {
     -ms-overflow-style: none; 
     scrollbar-width: none;  
 }
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+section {
+    background: transparent;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+  }
+  
+.module {
+    width: 30%;
+    min-height: 128px;
+    position: relative;
+    float: left;
+    padding: 20px;
+    margin-right: 2.5%;
+    margin-bottom: 2.5%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+  }
+  /*.module:nth-child(even) {
+    margin-right: 0;
+  }*/
+  
+  .come-in {
+    transform: translateY(150px);
+    animation: come-in 0.8s ease forwards;
+  }
+  
+  .come-in:nth-child(odd) {
+    animation-duration: 0.6s;
+  }
+  
+  .already-visible {
+    transform: translateY(0);
+    animation: none;
+  }
+  
+  @keyframes come-in {
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+
 
 
 @media (max-width: 500px) {
