@@ -325,20 +325,6 @@ section {
 }
   
 .module {
- /*   width: 100%;
-    min-height: 150px;
-    position: relative;
-    float: left;
-    padding: 20px;
-    margin-right: 2.5%;
-    margin-bottom: 2.5%;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-*/  
     width: 100%;
     min-height: 150px;
     overflow: hidden;
@@ -346,6 +332,8 @@ section {
     float: left;
     display: inline-block;
     cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
   
   .module img {
