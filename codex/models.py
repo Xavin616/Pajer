@@ -16,7 +16,7 @@ class Source(models.Model):
     name = models.CharField(max_length=200)
     feed = models.URLField()
     image = models.URLField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ManyToManyField(Category)
     
     '''class Meta:
         ordering = ['name']'''

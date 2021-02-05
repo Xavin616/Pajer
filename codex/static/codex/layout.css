@@ -316,15 +316,17 @@ p.card-text {
 
 section {
     background: transparent;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    overflow: hidden;
-  }
+    --auto-grid-min-size: 14rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+    grid-gap: 1rem;
+    text-align: center;
+}
   
 .module {
-    width: 30%;
-    min-height: 128px;
+ /*   width: 100%;
+    min-height: 150px;
     position: relative;
     float: left;
     padding: 20px;
@@ -336,7 +338,49 @@ section {
     justify-content: center;
     align-items: center;
     font-size: 16px;
+*/  
+    width: 100%;
+    min-height: 150px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+  .module img {
+    height: 150px;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    filter: brightness(50%);
   }
+
+  .module:hover img {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    filter: blur(3px);
+}
+
+  .module > h1 {
+    font-family: sans-serif;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+  }
+
   /*.module:nth-child(even) {
     margin-right: 0;
   }*/
@@ -365,15 +409,22 @@ section {
 
 
 @media (max-width: 500px) {
+    body { background-color: #f7f7f7 !important;}
+
     .grid-container { grid-template-columns: repeat(1, 1fr); }
 
     .side { display: hidden; max-height: none;}
 
     .cards { overflow-y: none; max-height: none;}
 
-    .headline {background-color: transparent;}
+    .headline {background-color: #f7f7f7;}
 
     .list-group {max-height: 140px;}
+    
+    section { 
+        display: flex;
+        flex-direction: column;
+    }
 
 }
 

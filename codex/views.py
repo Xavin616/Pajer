@@ -66,7 +66,7 @@ def categories(request):
 def spec_sources(request, id):
     template = 'codex/sources.html'
     sources, created = Follow.objects.get_or_create(user=request.user)
-    sourced = Source.objects.filter(category=Category.objects.get(name=id))
+    sourced = Source.objects.filter(category__name=id)
     context = {'sources': sources, 'id': id, 'sourced': sourced}
     return render(request, template, context)
 
