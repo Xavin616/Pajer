@@ -40,7 +40,7 @@ def def_headline(request):
 def headline(request, id):
     template = 'codex/headline.html'
     sources = Follow.objects.get(user=request.user)
-    sed = sources.source.get(name=id)
+    sed = Source.objects.get(name=id)
     headlines = Headline.objects.filter(source=sed)[:40]
     context = {'sources': sources, 'sed': sed, 'headlines': headlines}
     return render(request, template, context)
@@ -83,7 +83,7 @@ def follow(request, id):
     source = Source.objects.get(name=id)
     follow, created = Follow.objects.get_or_create(user=request.user)
     follow.source.add(source)
-    return redirect('headline', id=id)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 # Search    
 def search(request):
     template = 'codex/search.html'

@@ -3,22 +3,40 @@
 
 {% block body %}
     <div class="headline">
-            <h4 style="margin-left: 30px; color: rgb(15, 15, 15, 0.726); font-size: 24px; font-weight: bold;" class="display-4">{{id|capfirst}}</h4>
+            <h4 style="margin-left: 30px; color: rgb(15, 15, 15, 0.726); font-size: 28px; font-weight: bold;" class="display-4">
+                {% if id != None %}
+                    {{id|capfirst}}
+                {% else %}
+                    Sources
+                {% endif %}
+            </h4>
         <ul class="list-group" style="width: 100; max-height: 78.5vh; overflow-y: scroll;">
-            {% for sourca in sourced %}
-                <a href="{% url "follow_source" sourca.name %}">
-                    <li class="list-group-item" style="margin-bottom: 5px;">
-                        <img src="{{sourca.image}}" width="25" alt="." id="icon">
-                         {{sourca.name}}
-                        <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#7afc19" class="bi bi-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                            </svg>
+            <div class="row">
+                {% for sourca in sourced %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"> 
+                                <img src="{{sourca.image}}" width="30" alt="." id="icon">
+                                {{sourca.name}}
+                            </h5>
                         </div>
-                     </li>
-                </a>
-            {% endfor %}
-                
+                        <footer>
+                            <a href="{% url "headline" sourca.name %}">
+                                <button class="button">Preview</button>
+                            </a>
+                            {% if sourca in sources.source.all  %}
+                                <a class="icon" href="{% url 'delete_source' sourca.pk %}">
+                                    <button style="background-color: red !important;" class="button">Remove</button>
+                                </a>
+                            {% else %}
+                                <a class="icon" href="{% url 'follow_source' sourca.name %}">
+                                    <button class="button">Follow</button>
+                                </a>
+                            {% endif %}
+                        </footer>
+                    </div>
+                {% endfor %}
+            </div>
         </ul>
     </div>        
 {% endblock body %}
