@@ -428,6 +428,10 @@ section {
       margin-top: -5px;
 }
 
+.row {
+    --bs-gutter-x: 1.1rem !important;
+}
+
 .row > .card {
     position: relative;
     padding: 12px;
