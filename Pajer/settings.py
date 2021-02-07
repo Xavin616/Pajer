@@ -123,7 +123,6 @@ USE_TZ = True
 
 #SESSION_COOKIE_SECURE = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
