@@ -187,10 +187,12 @@ button {
     height: 20;
     width: 20;
     float: right;
+    margin-top: 2px;
 }
 
 .icon > svg {
     color: gray;
+    margin-top: 5px;
 }
 
 .icon > svg:hover {
