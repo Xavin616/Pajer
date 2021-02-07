@@ -412,9 +412,9 @@ section {
 
     .cards { overflow-y: none; max-height: none;}
 
-    .headline {background-color: #f7f7f7;}
+    .headline {background-color: #f7f7f7; max-height: 100%;}
 
-    .list-group {max-height: 140px;}
+    .list-group {max-height: 100%;}
     
     section { 
         display: flex;
