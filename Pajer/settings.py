@@ -24,12 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'i+^6fop$j64o(rud_6(0_z+zt5t&&thp=wp1r2*o0lk#m$d%6_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['pajer.herokuapp.com', '127.0.0.1:8000']
 
 # Application definition
 
@@ -119,6 +118,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
 
 
 # Static files (CSS, JavaScript, Images)
